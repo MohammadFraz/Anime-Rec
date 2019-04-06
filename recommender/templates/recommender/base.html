@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar navbar-expand-sm navbar-dark bg-primary p-2">
+            <a style="letter-spacing: 3px;" class="p-2 navbar-brand font-weight-bold p-2" href="{% url 'index' %}"><span style="font-family: 'Indie Flower', cursive;">Binge.</span></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <form class="form-inline p-2 mx-auto" method="post" action="/recommender/">
+                    {% csrf_token %}
+                    <input type="text" placeholder="MAL username" class="form-control mr-sm-2" id="username" name="username" required >
+                    <button class="btn btn-outline-light" type="submit">Enter!</button>
+                </form>
+                <a class="text-white p-2 float-lg-right navbar-text" href="{% url 'credits' %}">Credits</a>
+            </div>
+        </nav>
+        <div class="h-100 bg-light d-flex flex-column justify-content-center">
+            <h1 class="p-2 text-center">
+                {% block heading %}
+                {% endblock %}
+            </h1>
+            <div class="p-2">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+        <footer class="bg-primary text-center text-white py-2">
+            <span style="font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', 'Verdana', sans-serif">Made by Mohammad Fraz</span>
+            <hr class="m-1 mx-auto" style="width: 75%"/>
+            <small>Licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" class="text-white">Apache License 2.0</a></small>
+        </footer>
+    </div>
+</body>
+</html>

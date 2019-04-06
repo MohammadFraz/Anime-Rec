@@ -1,0 +1,31 @@
+{% extends 'recommender/base.html' %}
+
+{% block title %}
+    List
+{% endblock %}
+
+{% block heading %}
+    Anime recommendations for {{ userid }}
+{% endblock %}
+{% block content %}
+    <table class="table table-striped mx-auto table-bordered table-responsive" style="width: 95%; margin: 0 auto">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col" class="align-middle">No.</th>
+                <th scope="col" class="align-middle">Name</th>
+                <th scope="col" class="align-middle">Genre</th>
+                <th scope="col" class="align-middle">MAL rating</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for r in recc %}
+                <tr>
+                    <td class="align-middle">{{ forloop.counter }}</td>
+                    <td class="align-middle">{{ r.name }}</td>
+                    <td class="align-middle">{{ r.genre_list }}</td>
+                    <td class="align-middle">{{ r.rating }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
