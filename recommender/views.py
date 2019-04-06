@@ -24,14 +24,6 @@ def recommender(request):
     genre_list = []
     user_score_list = []
     list_watched = []
-    feature_detail = []
-
-    for i in range(43):
-        feature_detail.append([i])
-
-    for i in range(43):
-        for j in range(i, 43):
-            feature_detail.append([i, j])
 
     for ani in anime_list:
         if ani['score'] != '0':
